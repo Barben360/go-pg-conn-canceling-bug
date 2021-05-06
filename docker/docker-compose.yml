@@ -1,0 +1,13 @@
+version: "3.5"
+
+services:
+    postgres:
+        image: postgres:12.4
+        restart: unless-stopped
+        ports:
+            - 5454:5432
+        environment:
+            - POSTGRES_USER=postgres-user
+            - POSTGRES_PASSWORD=postgres-password
+            - POSTGRES_DB=db
+        command: ${POSTGRES_COMMAND:-postgres -c log_statement=all -c log_min_duration_statement=0}
